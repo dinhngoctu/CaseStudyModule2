@@ -29,6 +29,8 @@ public class MainProductController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("UTF-8");
         ArrayList<Product> value= null;
         String str = request.getParameter("sort");
         if (str.equalsIgnoreCase("tt")) {

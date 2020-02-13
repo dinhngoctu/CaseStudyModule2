@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>ProductsManager</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/templates/main.css">
     <%--  <link rel="script" href="<%=request.getContextPath()%>/">--%>

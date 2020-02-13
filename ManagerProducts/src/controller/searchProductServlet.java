@@ -21,6 +21,8 @@ public class searchProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("UTF-8");
         String value = req.getParameter("search");
         ArrayList<Product> al = ReadProduct.getReadProduct().readFilesObject("/home/bbt/Git/java-new/ManagerProducts/files/Products.md");
         ArrayList<SearchProduct> ar = SearchProduct.search(value,al);
