@@ -1,0 +1,40 @@
+table {
+    border: 1px solid black;
+    border-radius: 2px;
+    border-collapse: collapse;
+}
+
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}
+
+input[type=button],
+input[type=submit],
+input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    margin: 2px 1px;
+    cursor: pointer;
+}
+
+input[type=text] {
+    padding: 12px 24px;
+    margin: 10px 5px;
+}
+
+td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+#main div {
+    flex: 1
+}
