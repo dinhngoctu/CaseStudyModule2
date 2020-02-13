@@ -1,4 +1,5 @@
 package service;
+
 import model.Product;
 
 import java.util.ArrayList;
@@ -35,17 +36,19 @@ public class SearchProduct {
 
     public static ArrayList<SearchProduct> search(String s, ArrayList<Product> list) {
         ArrayList<SearchProduct> ar = new ArrayList<>();
-        String[] arrS = s.split(" ");
+        String s1 = s.toLowerCase();
+        String[] arrS = s1.split(" ");
         for (Product product : list) {
             int value = 0;
-            for(String str:arrS){
-                String regex = "[" + String.valueOf(str.charAt(0)).toUpperCase()+String.valueOf(str.charAt(0)).toLowerCase()+"]" + str.substring(1)+"|"+str.toUpperCase()+"|"+str.toLowerCase();
-                Pattern pattern = Pattern.compile(regex);
-            String info = product.getName() +" "+ product.getDescripe() +" "+ product.getPrice() +" "+ product.getPhoneNumber();
-            Matcher matcher = pattern.matcher(info);
-            while (matcher.find()) {
-                value++;
-            }}
+            for (String str : arrS) {
+                Pattern pattern = Pattern.compile(str);
+                String info1 = product.getName() + " " + product.getDescripe() + " " + product.getPrice() + " " + product.getPhoneNumber();
+                String info = info1.toLowerCase();
+                Matcher matcher = pattern.matcher(info);
+                while (matcher.find()) {
+                    value++;
+                }
+            }
             if (value > 0) {
                 ar.add(new SearchProduct(product, value));
             }
@@ -53,11 +56,40 @@ public class SearchProduct {
         Collections.sort(ar, new Comparator<SearchProduct>() {
             @Override
             public int compare(SearchProduct searchProduct, SearchProduct t1) {
-               return searchProduct.getValueSearch() < t1.getValueSearch() ? 1 : -1;
+                return searchProduct.getValueSearch() < t1.getValueSearch() ? 1 : -1;
             }
         });
         return ar;
     }
+
+    public static ArrayList<SearchProduct> search2(String s, ArrayList<Product> list) {
+        ArrayList<SearchProduct> ar = new ArrayList<>();
+        String[] arrS = s.split(" ");
+        for (Product product : list) {
+            int value = 0;
+            for (String str : arrS) {
+                String regex = "[" + String.valueOf(str.charAt(0)).toUpperCase() + String.valueOf(str.charAt(0)).toLowerCase() + "]" + str.substring(1) + "|" + str.toUpperCase() + "|" + str.toLowerCase();
+                Pattern pattern = Pattern.compile(regex);
+                String info = product.getName() + " " + product.getDescripe() + " " + product.getPrice() + " " + product.getPhoneNumber();
+                Matcher matcher = pattern.matcher(info);
+                while (matcher.find()) {
+                    value++;
+                }
+            }
+            if (value > 0) {
+                ar.add(new SearchProduct(product, value));
+            }
+        }
+        Collections.sort(ar, new Comparator<SearchProduct>() {
+            @Override
+            public int compare(SearchProduct searchProduct, SearchProduct t1) {
+                return searchProduct.getValueSearch() < t1.getValueSearch() ? 1 : -1;
+            }
+        });
+        return ar;
+    }
+
+
 //    public boolean checkNumber(String str) {
 //
 //    }
