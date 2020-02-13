@@ -33,16 +33,19 @@ public class SearchProduct {
         return valueSearch;
     }
 
-    public static ArrayList<SearchProduct> search(String str, ArrayList<Product> list) {
+    public static ArrayList<SearchProduct> search(String s, ArrayList<Product> list) {
         ArrayList<SearchProduct> ar = new ArrayList<>();
-        Pattern pattern = Pattern.compile(str);
+        String[] arrS = s.split(" ");
         for (Product product : list) {
             int value = 0;
-            String info = product.getName() + product.getDescripe() + product.getPrice() + product.getPhoneNumber();
+            for(String str:arrS){
+                String regex = "[" + String.valueOf(str.charAt(0)).toUpperCase()+String.valueOf(str.charAt(0)).toLowerCase()+"]" + str.substring(1)+"|"+str.toUpperCase()+"|"+str.toLowerCase();
+                Pattern pattern = Pattern.compile(regex);
+            String info = product.getName() +" "+ product.getDescripe() +" "+ product.getPrice() +" "+ product.getPhoneNumber();
             Matcher matcher = pattern.matcher(info);
             while (matcher.find()) {
                 value++;
-            }
+            }}
             if (value > 0) {
                 ar.add(new SearchProduct(product, value));
             }
@@ -50,9 +53,13 @@ public class SearchProduct {
         Collections.sort(ar, new Comparator<SearchProduct>() {
             @Override
             public int compare(SearchProduct searchProduct, SearchProduct t1) {
-               return searchProduct.getValueSearch() > t1.getValueSearch() ? 1 : -1;
+               return searchProduct.getValueSearch() < t1.getValueSearch() ? 1 : -1;
             }
         });
         return ar;
     }
+//    public boolean checkNumber(String str) {
+//
+//    }
+
 }

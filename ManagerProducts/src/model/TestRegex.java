@@ -1,15 +1,18 @@
 package model;
 
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class TestRegex {
     public static void main(String[] args) {
-        String str = "a + bc - c * d / e < f > g >= h <= i == j";
-        String reg = "\\s*[a-zA-Z] *";
-        String reg1 = " \\S | \\S\\S ";
-        String[] res = str.split(reg1);
-        for (String out : res) {
-            if (!"".equals(out)) {
-                System.out.println(","+out+",");
-            }
-        }
+        String str = "dang lam gi day dang da an chua";
+        String reg = "abc";
+        String REG = reg.toUpperCase();
+        System.out.println(str.compareTo(reg));
+
+
     }
+
 }
